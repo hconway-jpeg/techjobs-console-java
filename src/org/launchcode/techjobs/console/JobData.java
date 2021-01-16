@@ -92,11 +92,13 @@ public class JobData {
         ArrayList<HashMap<String, String>> searchAllJobs = new ArrayList<>();
 
         for (HashMap<String, String> oneJob : allJobs) {
-            for (Map.Entry<String, String> key : oneJob.entrySet()) {
-                String aValue = oneJob.get(key);
+            for (Map.Entry<String, String> entry : oneJob.entrySet()) {
+                String aValue = entry.getValue();
 
                 if (aValue.contains(searchValue)) {
-                    searchAllJobs.add(oneJob);
+                    if (!searchAllJobs.contains(oneJob)) {
+                        searchAllJobs.add(oneJob);
+                    }
                 }
             }
         }
